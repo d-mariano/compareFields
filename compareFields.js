@@ -1,4 +1,6 @@
 /**
+ * Author: Dave Mariano
+ *
  * Script compares two fields on the event that either one
  * is changing and the either sets or clears a message.
  */
@@ -11,13 +13,10 @@ document.getElementById('password').oninput =
   function(){ onPassChange(); };
 
 /**
- * Function compares the current value of either field, 
- * if they do not comapare then a span is placed
- * under one of the fields.  If they do compare, any
- * span placed under the confirm password field is detached.
- * 
- * Label color changes, depending on compare:  
- *  Match = #4D4D4D  Miss = #A94442
+ * Function compares the current value of either field, if they do
+ * not comapare then a span is placed under one of the fieldsand 
+ * an error class is added to the parent div.  If they do compare, 
+ * the parent class is removedand the add span is detached.
  */
 function onPassChange(){
   
