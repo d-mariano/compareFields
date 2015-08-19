@@ -22,34 +22,27 @@ document.getElementById('password').oninput =
 function onPassChange(){
   
   // Specify message for span to be inserted
-  $span = '<span class="help-block ">Passwords are not equal</span>';
+  $span = '<span class="help-block">Passwords are not equal</span>';
+  $confirmPassword = $('#confirm-password');
+  $password = $('#password');
+  $confirmLabel = $confirmPassword.siblings("label");
+  $existingSpan = $confirmPassword.siblings("span");
+  $confirmDiv = $confirmPassword.parent();
+  
   
   // If passwords match, remove span and revert styles
-  if( $('#confirm-password').val() === $('#password').val() ){
-    // Label 
-    $("[for='confirm-password']").css('color', '#4D4D4D');
-    // Field border
-    $('#confirm-password').css({
-      'border-color': '#9C9C9C',
-      'border-bottom-color': '999'
-    });
-    $("input#confirm-password + span").detach();
+  if( $confirmPassword.val() === $password.val() ) {
+    $existingSpan.detach();
+    // Remove error class from div
+    $confirmDiv.removeClass("has-error");
   }
   
   // If they do not, create a span and styles,
   // provided that a span does not already exist
-  else if($('input#confirm-password + span').length == 0){ 
-    // Label
-    $("[for='confirm-password']").css('color', '#A94442');
-    // Field border
-    $('#confirm-password').css({
-      'border-color': '#843534',
-      'border-width':'0.833333px', 
-      'border-radius':'4px'
-    });
+  else if( $existingSpan.length === 0 ) { 
     // Insert span
-    $('#confirm-password').after($span);
-    // Style span
-    $("span.help-block").css('color', '#A94442'); 
+    $confirmPassword.after($span);
+    // Add error class to div
+    $confirmDiv.addClass("has-error");
   }
 }
