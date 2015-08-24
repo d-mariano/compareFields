@@ -27,10 +27,13 @@ function onPassChange(){
   $confirmLabel = $confirmPassword.siblings("label");
   $existingSpan = $confirmPassword.siblings("span");
   $confirmDiv = $confirmPassword.parent();
+  $submitButton = $("button:submit");
   
   
   // If passwords match, remove span and revert styles
   if( $confirmPassword.val() === $password.val() ) {
+    // Enable submit
+    $submitButton.attr('disabled', false);
     $existingSpan.detach();
     // Remove error class from div
     $confirmDiv.removeClass("has-error");
@@ -39,6 +42,8 @@ function onPassChange(){
   // If they do not, create a span and styles,
   // provided that a span does not already exist
   else if( $existingSpan.length === 0 ) { 
+    // Disable submit
+    $submitButton.attr('disabled', true);
     // Insert span
     $confirmPassword.after($span);
     // Add error class to div
