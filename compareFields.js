@@ -26,32 +26,33 @@ document.getElementById('password').oninput =
 function onFieldChange(){
   
   // Specify message for span to be inserted
-  $span = '<span class="help-block">Passwords are not equal</span>';
-  $confirmPassword = $('#confirm-password');
-  $password = $('#password');
-  $confirmLabel = $confirmPassword.siblings("label");
-  $existingSpan = $confirmPassword.siblings("span");
-  $confirmDiv = $confirmPassword.parent();
-  $submitButton = $("button:submit");
+  var span = '<span class="help-block">Passwords are not equal</span>';
+  var confirmPassword = $('#confirm-password');
+  var password = $('#password');
+  var confirmLabel = confirmPassword.siblings("label");
+  var existingSpan = confirmPassword.siblings("span");
+  var confirmDiv = confirmPassword.parent();
+  var submitButton = $("button:submit");
   
   
   // If passwords match, remove span and class
-  if( $confirmPassword.val() === $password.val() ) {
+  if( confirmPassword.val() === password.val() ) {
     // Enable submit
-    $submitButton.attr('disabled', false);
-    $existingSpan.detach();
+    submitButton.attr('disabled', false);
+    existingSpan.detach();
     // Remove error class from div
-    $confirmDiv.removeClass("has-error");
+    confirmDiv.removeClass("has-error");
   }
   
   // If they do not, create a span and add class,
   // provided that a span does not already exist
-  else if( $existingSpan.length === 0 ) { 
+  else if( existingSpan.length === 0 ) { 
     // Disable submit
-    $submitButton.attr('disabled', true);
+    submitButton.attr('disabled', true);
     // Insert span
-    $confirmPassword.after($span);
+    confirmPassword.after(span);
     // Add error class to div
-    $confirmDiv.addClass("has-error");
+    confirmDiv.addClass("has-error");
   }
 }
+
