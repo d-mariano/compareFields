@@ -2,7 +2,7 @@
 A simple JavaScript function used to compare fields for equality. 
 
 ### Requirements
-* JQuery
+* jQuery
 
 ### Use
 Simply read through the script and change any queries to suit your need.  
